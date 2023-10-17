@@ -1,0 +1,141 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API desafio AWS re/start",
+    "description": "API para gerenciar informações de alunos"
+  },
+  "paths": {
+    "/alunos": {
+      "get": {
+        "summary": "Listar todos os alunos",
+        "responses": {
+          "200": {
+            "description": "Retorna a lista de todos os alunos",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Criar um novo aluno",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "aluno",
+            "description": "Dados do aluno a ser criado",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": { "type": "string" },
+                "idade": { "type": "integer" },
+                "nota_1": { "type": "number" },
+                "nota_2": { "type": "number" },
+                "nome_professor": { "type": "string" },
+                "numero_sala": { "type": "integer" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Aluno criado com sucesso",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/alunos/{id}": {
+      "put": {
+        "summary": "Atualizar um aluno existente",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID do aluno a ser atualizado",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "aluno",
+            "description": "Novos dados do aluno",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": { "type": "string" },
+                "idade": { "type": "integer" },
+                "nota_1": { "type": "number" },
+                "nota_2": { "type": "number" },
+                "nome_professor": { "type": "string" },
+                "numero_sala": { "type": "integer" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Aluno atualizado com sucesso",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "404": {
+            "description": "Aluno não encontrado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar um aluno",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID do aluno a ser deletado",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Aluno deletado com sucesso"
+          },
+          "404": {
+            "description": "Aluno não encontrado"
+          }
+        }
+      },
+      "get": {
+        "summary": "Obter um aluno por ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID do aluno a ser obtido",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna os detalhes do aluno",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "404": {
+            "description": "Aluno não encontrado"
+          }
+        }
+      }
+    }
+  }
+}
