@@ -9,7 +9,7 @@ datasource db {
 
 
 model Aluno {
-  id String  @default(uuid())
+  id String  @unique @default(uuid())
   nome String
   idade Int
   nota_1 Float

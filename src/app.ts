@@ -2,8 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import alunoRoutes from './routes/AlunoRouter';
 
-
-
 import * as dotenv from 'dotenv';
 
 
